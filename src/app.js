@@ -1,5 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+
+const config = require('./config');
 
 const userRouter = require('./routes/user');
 
@@ -9,6 +12,13 @@ app.use(bodyParser.json());
 
 app.use('/users', userRouter);
 
-app.listen(4000, () => {
-  console.log('Server is running');
-});
+const boot = async () => {
+  // Connect to mongodb
+  await mongoose.connect(config.uri);
+  // Start express server
+  app.listen(4000, () => {
+    console.log('Server is running');
+  });
+};
+
+boot();
