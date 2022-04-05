@@ -5,7 +5,14 @@ const RecordModel = require('../models/record');
 const router = express.Router();
 
 router.use('/:recordId', async (req, res, next) => {
-  const foundRecord = await RecordModel.findById(req.params.recordId);
+  const recordId = req.params.recordId;
+  // Check if recordId is a valid mongodb objectId
+  if (recordId && !recordId.match(/^[0-9a-fA-F]{24}$/)) {
+    // You can response 400 too since client should request with valid it
+    // But this way it's easier to handle status code
+    return res.status(404).send('Record not found');
+  }
+  const foundRecord = await RecordModel.findById(recordId);
   if (!foundRecord) {
     return res.status(404).send('Record not found');
   }
