@@ -1,10 +1,10 @@
 const express = require('express');
 
 require('dotenv').config();
-const config = require('./config');
+const config = require('../src/config');
 const PORT = config.port;
 
-const userRouter = require('./routes/user');
+const userRouter = require('../src/routes/user');
 
 const app = express();
 
