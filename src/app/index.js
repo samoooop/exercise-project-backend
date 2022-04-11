@@ -18,7 +18,7 @@ eg. mongoose.connect(). So we should connect to mongoose before every request by
 
 Note: Create new connection to database before
  */
-if (config.runningOnVercel) {
+if (config.isVercel) {
   app.use(async (req, res, next) => {
     await mongoose.connect(config.mongoUri, config.mongoOptions);
     return next();
