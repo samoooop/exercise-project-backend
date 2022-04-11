@@ -8,8 +8,9 @@ const userRouter = require('./routes/user');
 
 const app = express();
 
-app.use((req, res, next) => {
+app.use(async (req, res, next) => {
   await mongoose.connect(config.mongoUri, config.mongoOptions);
+  return next();
 });
 app.use(bodyParser.json());
 app.use(
