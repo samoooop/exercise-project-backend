@@ -12,7 +12,7 @@ require('dotenv').config();
  **/
 module.exports = {
   isVercel: process.env.IS_VERCEL || false,
-  port: process.env.PORT || 4001,
+  port: process.env.PORT || 4000,
   mongoUri: process.env.MONGO_URI,
   mongoOptions: {
     user: process.env.MONGO_USER,
