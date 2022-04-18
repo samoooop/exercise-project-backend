@@ -37,5 +37,9 @@ app.use(
 
 // Our routers
 app.use('/users', userRouter);
+app.use('/users-1', userRouter);
+app.use('/users-2', userRouter);
+app.use('/users-3', userRouter);
+app.use('/users-4', userRouter);
 
 module.exports = app;
